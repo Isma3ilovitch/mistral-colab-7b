@@ -44,3 +44,70 @@ This project is designed for learning and experimentation with real LLM systems.
 
 ```bash
 pip install torch transformers gradio bitsandbytes accelerate
+```
+---
+
+### 🧠 Mistral Hybrid Memory Chat (7B)
+
+An open-source **LLM chat system with real memory** powered by **Mistral-7B**,
+combining **summary-based context** and **persistent vector memory** using
+LangChain and Chroma — all runnable on a **FREE Google Colab GPU**.
+
+This project demonstrates how modern AI assistants can remember information
+across conversations, not just within a single prompt.
+
+---
+
+## ✨ Key Features
+
+- 🧠 **ConversationSummaryMemory** (compressed short-term context)
+- 🗂️ **Persistent long-term memory** with Chroma vector database
+- 🔎 Semantic memory retrieval using embeddings
+- ⚡ 4-bit quantized Mistral 7B (low VRAM)
+- 🎛️ Interactive Gradio chat UI
+- 💾 Memory persists across sessions
+
+---
+
+## 🧩 Memory Architecture
+
+This system uses **hybrid memory**:
+
+1. **Summary Memory**
+   - Keeps conversations short and efficient
+   - Prevents context window overflow
+
+2. **Vector Memory (Chroma)**
+   - Stores past conversations as embeddings
+   - Retrieves relevant memories by similarity
+   - Persists on disk
+
+Together, this mimics **human-like long-term memory**.
+
+---
+
+## 🛠️ Tech Stack
+
+- Python
+- PyTorch
+- Hugging Face Transformers
+- Mistral-7B-Instruct
+- LangChain (classic + community)
+- Chroma Vector Database
+- Sentence-Transformers
+- Gradio
+
+---
+
+## 🚀 Run on Google Colab
+
+1. Open a new **Google Colab** notebook  
+2. Enable GPU:
+   `Runtime → Change runtime type → GPU`
+
+3. Install dependencies:
+
+```bash
+pip install torch transformers gradio accelerate bitsandbytes \
+langchain langchain-community sentence-transformers chromadb
+
