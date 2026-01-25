@@ -111,4 +111,74 @@ Together, this mimics **human-like long-term memory**.
 ```bash
 pip install torch transformers gradio accelerate bitsandbytes \
 langchain langchain-community sentence-transformers chromadb
+```
 
+
+---
+# 🧠 LLM with Smart Long-Term Memory (Mistral 7B + FAISS)
+
+A minimal **LLM chat system with selective long-term memory**, built using
+**Mistral-7B**, **LangChain**, and **FAISS**, runnable on a **FREE Google Colab GPU**.
+
+Instead of storing every message, this project uses the LLM itself to decide  
+**what is worth remembering long-term**.
+
+---
+
+## ✨ Features
+
+- 🧠 Short-term memory via `ConversationSummaryMemory`
+- 🗂️ Persistent long-term memory with **FAISS**
+- ⚖️ LLM-based importance filtering (store only useful memories)
+- 🔎 Semantic retrieval of relevant past interactions
+- ⚡ 4-bit quantized Mistral-7B (low VRAM)
+- 🎛️ Simple Gradio chat UI
+
+---
+
+## 🧩 Memory Design
+
+This system uses **three memory layers**:
+
+1. **Summary Memory**
+   - Compresses recent conversation
+   - Prevents context window overflow
+
+2. **Vector Memory (FAISS)**
+   - Stores important interactions only
+   - Persists on disk
+
+3. **Importance Filter**
+   - The LLM decides whether an interaction is worth saving
+   - Avoids memory pollution
+
+---
+
+## 🛠️ Tech Stack
+
+- Python
+- PyTorch
+- Hugging Face Transformers
+- Mistral-7B-Instruct
+- LangChain (classic + community)
+- FAISS
+- Sentence-Transformers
+- Gradio
+
+---
+
+## 🚀 Run on Google Colab
+
+1. Open a new **Google Colab** notebook  
+2. Enable GPU:
+   `Runtime → Change runtime type → GPU`
+
+3. Install dependencies:
+
+```bash
+pip install torch transformers gradio accelerate bitsandbytes \
+langchain langchain-community sentence-transformers faiss-cpu
+```
+4.Run the script
+
+5.Open the generated Gradio share link
