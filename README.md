@@ -182,3 +182,52 @@ langchain langchain-community sentence-transformers faiss-cpu
 4.Run the script
 
 5.Open the generated Gradio share link
+
+---
+# 🧠 LLM Smart Memory Agent
+
+A minimal **LLM chat system with structured, selective, multi-user memory**.
+Built using **Mistral-7B**, **LangChain**, and **FAISS**, and runnable on a
+**FREE Google Colab GPU**.
+
+The focus of this project is **memory architecture**, not prompt tricks.
+
+---
+
+## ✨ Features
+
+- 🧠 Short-term context via `ConversationSummaryMemory`
+- 🗂️ Persistent long-term memory with FAISS
+- ⚖️ LLM-based importance scoring (0–10)
+- 🏷️ Memory classification (fact / preference / ignore)
+- 👥 Multi-user memory isolation
+- 🔎 Semantic memory retrieval
+- ⚡ 4-bit quantized Mistral-7B
+- 🎛️ Simple Gradio chat UI
+
+---
+
+## 🧩 Memory Design
+
+Each interaction is processed as follows:
+
+1. Retrieve relevant memories (FAISS)
+2. Inject memories into the prompt
+3. Generate response using summary memory
+4. Ask the LLM:
+5. Score importance (0–10)
+6. Classify memory type:
+- `fact`
+- `preference`
+- `ignore`
+7. Persist only useful memories
+
+---
+
+## 🗂️ Memory Structure
+
+```text
+memory_store/
+└── user_id/
+  ├── facts/
+  └── preferences/
