@@ -290,7 +290,7 @@ Each interaction is processed as follows:
 
 ### Memory Decay Formula
 
-score = importance * e^(-λ × age_in_days)
+```score = importance * e^(-λ × age_in_days)```
 
 
 This prevents old or irrelevant memories from dominating context.
