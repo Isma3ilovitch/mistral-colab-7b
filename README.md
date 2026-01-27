@@ -231,3 +231,81 @@ memory_store/
 └── user_id/
   ├── facts/
   └── preferences/
+```
+---
+# 🧠 LLM Custom Agent with Decaying Memory & Tools
+
+A **custom-built LLM agent** with manual routing, tool usage, and
+**long-term memory with importance decay**, running on a **FREE Google Colab GPU**.
+
+This project avoids LangChain agents and instead implements
+**explicit control over routing, memory, and tools**.
+
+---
+
+## ✨ Features
+
+- 🤖 Manual router (LLM decides what to do)
+- 🧮 Calculator tool
+- 🧠 Short-term context via `ConversationSummaryMemory`
+- 🗂️ Persistent long-term memory with FAISS
+- ⚖️ LLM-based importance scoring (0–10)
+- ⏳ Memory decay over time (exponential decay)
+- 👥 Multi-user memory isolation
+- ⚡ 4-bit quantized Mistral-7B (NF4)
+- 🎛️ Gradio chat UI
+
+---
+
+## 🧩 Agent Design
+
+This agent does **not** rely on built-in agent abstractions.
+
+Instead, it uses:
+- explicit routing logic
+- custom tools
+- manual memory control
+
+### Routing Logic
+
+For each user message, the LLM chooses one route:
+
+- `calculator` → math expressions
+- `memory` → summarize stored memories
+- `chat` → normal conversation
+
+---
+
+## 🧠 Memory System
+
+Each interaction is processed as follows:
+
+1. Retrieve relevant memories from FAISS
+2. Rank memories using **importance × time decay**
+3. Inject top memories into the prompt
+4. Generate response
+5. Score interaction importance (0–10)
+6. Store only important memories
+7. Apply decay over time
+
+### Memory Decay Formula
+
+score = importance * e^(-λ × age_in_days)
+
+
+This prevents old or irrelevant memories from dominating context.
+
+---
+
+## 🗂️ Memory Structure
+
+```text
+memory_store/
+ └── user_id/
+     └── facts/
+```
+Each user has isolated memory
+
+Memories persist across sessions
+
+Stored with metadata (importance + timestamp)
