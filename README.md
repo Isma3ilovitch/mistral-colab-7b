@@ -311,3 +311,54 @@ Each user has isolated memory
 Memories persist across sessions
 
 Stored with metadata (importance + timestamp)
+
+---
+# 🧠 Time-Aware RAG Agent (Mistral 7B)
+
+This project is a **custom AI agent** built with **Mistral 7B (4-bit)** that combines:
+- Chatting 💬
+- Long-term memory 🧠
+- Web search 🔍
+- Calculator ➗
+- Date & time awareness ⏰
+
+It uses **RAG (Retrieval-Augmented Generation)** with **FAISS** and includes a **Gradio UI** for easy interaction.
+
+---
+
+## 🚀 Features
+
+- **Mistral 7B Instruct (4-bit quantized)** for fast inference on limited GPUs
+- **Conversation memory** with importance scoring + time decay
+- **Web search** using DuckDuckGo (filters out old info to reduce hallucinations)
+- **Tool routing**:
+  - Calculator
+  - Date & time
+  - Web search
+  - Memory recall
+  - Normal chat
+- **Per-user memory storage**
+- **Gradio chat interface**
+
+---
+
+## 🛠 Tech Stack
+
+- Python
+- Hugging Face Transformers
+- LangChain
+- FAISS
+- DuckDuckGo Search
+- Gradio
+- PyTorch
+- Sentence-Transformers
+
+---
+
+## 📦 Installation
+
+Run this in **Google Colab** (recommended):
+
+```bash
+pip install -U transformers accelerate bitsandbytes langchain-community langchain-classic faiss-cpu gradio duckduckgo-search trafilatura sentence-transformers
+```
